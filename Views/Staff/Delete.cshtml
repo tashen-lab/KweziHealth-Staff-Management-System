@@ -1,0 +1,32 @@
+@model StaffMember
+@{
+    ViewData["Title"] = "Delete Staff Member";
+}
+
+<h4 class="mb-3">Delete Staff Member</h4>
+
+<div class="card">
+    <div class="card-body">
+        <p>Are you sure you want to delete the following staff member?</p>
+
+        <dl class="row">
+            <dt class="col-sm-3">Full Name</dt>
+            <dd class="col-sm-9">@Model.FullName</dd>
+
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+
+            <dt class="col-sm-3">Position</dt>
+            <dd class="col-sm-9">@Model.Position</dd>
+
+            <dt class="col-sm-3">Unit</dt>
+            <dd class="col-sm-9">@Model.Unit</dd>
+        </dl>
+
+        <form asp-controller="Staff" asp-action="Delete" asp-route-id="@Model.StaffId" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a asp-controller="Staff" asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>

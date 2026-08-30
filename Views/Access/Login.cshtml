@@ -1,0 +1,29 @@
+@model SystemAdmin
+@{
+    ViewData["Title"] = "Administrator Login";
+}
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4 class="card-title mb-3">Administrator Login</h4>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <form asp-controller="Access" asp-action="Login" method="post">
+            @Html.AntiForgeryToken()
+            <div class="mb-3">
+                <label asp-for="Username" class="form-label"></label>
+                <input asp-for="Username" class="form-control" autofocus />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Log In</button>
+        </form>
+
+        <p class="text-muted small mt-3 mb-0">Demo Credentials: admin, Password: Admin123!</p>
+    </div>
+</div>
